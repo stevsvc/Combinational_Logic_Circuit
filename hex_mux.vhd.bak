@@ -1,0 +1,23 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity hex_mux is
+   port (
+			hex_concatenate : in std_logic_vector(7 downto 0);
+			hex_sum			 : in std_logic_vector(7 downto 0);
+			mux_select	 	 : in	std_logic_vector(1 downto 0);
+			hex_out			 : out std_logic_vector(7 downto 0)
+        );
+		  
+end entity segment7_mux;
+
+architecture mux_logic of hex_mux is
+
+begin 
+
+ with mux_select(1 downto 0) select
+ hex_out <= hex_concatenation when "00",
+				hex_sum when "01";
+
+end mux_logic;

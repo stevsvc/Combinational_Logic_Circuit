@@ -1,0 +1,25 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity Logic_Processor is
+   port (
+			hex_A, hex_B    : in std_logic_vector(3 downto 0);
+			select_pb		 : in std_logic_vector(2 downto 0);
+			hex_out			 : out std_logic_vector(7 downto 0)
+        );
+		  
+end entity Logic_Processor;
+
+architecture Logic_Processor_Pb of Logic_Processor is
+
+begin 
+	
+ 
+ with select_pb(2 downto 0) select
+ hex_out <= "0000" & (hex_A AND hex_B) when "001",
+				"0000" & (hex_A  OR hex_B) when "010",
+				"0000" & (hex_A XOR hex_B) when "100",
+				"00000000" when others;
+				
+end Logic_Processor_Pb;
